@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Parça...</title>
+    <link rel="stylesheet" href="../style.css" />
+  </head>
+  <body>
+    <header class="header">
+      <h1 class="title-page">Acervo de Piadas</h1>
+      <h2 class="subtitle-page">(mas são todas ruins)</h2>
+    </header>
+    <main class="main-joke">
+      <div class="card">
+            
+            <div class="joke-section">
+                <p class="joke-text" id="jokeText">Clique em "Nova Piada" para começar!</p>
+            </div>
+            
+            <div class="answer-section">
+                <div class="joke-label">Resposta:</div>
+                <div class="hidden-message" id="hiddenMessage">Clique em "Revelar Resposta" para descobrir!</div>
+                <p class="answer-text" id="answerText"></p>
+            </div>
+            
+            <div class="buttons">
+                <button class="button button-reveal" id="revealbutton" onclick="revealAnswer()" >
+                    <span>Revelar Resposta</span>
+                </button>
+                <button class="button button-new" onclick="generateNewJoke()">
+                    <span>Nova Piada</span>
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+      Site feito sem critério, mantido com convicção
+    </footer>
+
+    <script src="../js/js.js"></script>
+  </body>
+</html>

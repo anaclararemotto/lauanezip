@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CLICA AÍ, LUANA</title>
+
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap");
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        height: 100vh;
+        background: #ffc0dd;
+        font-family: "Comic Neue", cursive;
+        overflow: hidden;
+        cursor: pointer;
+      }
+
+      #titulo {
+        position: fixed;
+        top: 16px;
+        left: 16px;
+        background: #fff;
+        padding: 8px 12px;
+        transform: rotate(-2deg);
+        font-size: 14px;
+      }
+
+      #contador {
+        position: fixed;
+        bottom: 16px;
+        right: 16px;
+        font-size: 12px;
+        opacity: 0.5;
+      }
+
+      .mensagem {
+        position: absolute;
+        background: #fff;
+        padding: 6px 10px;
+        font-size: 14px;
+        transform: rotate(var(--rot));
+        animation: sumir 3s forwards;
+      }
+
+      @keyframes sumir {
+        to {
+          opacity: 0;
+          transform: translateY(-20px) rotate(var(--rot));
+        }
+      }
+
+      img.colagem {
+        position: absolute;
+        width: 90px;
+        pointer-events: none;
+        opacity: 0.9;
+      }
+
+      #naoClique {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) rotate(3deg);
+        background: #ff5fa2;
+        color: #fff;
+        padding: 12px 16px;
+        font-size: 16px;
+      }
+
+      @keyframes respirar {
+        0% {
+          background-color: #ffc0dd;
+        }
+        50% {
+          background-color: #ff9fc9;
+        }
+        100% {
+          background-color: #ffc0dd;
+        }
+      }
+
+      body {
+        animation: respirar 6s infinite ease-in-out;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="titulo">CLICA AÍ, LUANA</div>
+    <div id="contador">cliques: 0</div>
+    <div id="naoClique">não clique aqui</div>
+
+    <audio id="musica" src="music/hidden1.mp3"></audio>
+
+    <script>
+      let clicks = 0;
+
+      let frases = [
+        "isso não faz nada",
+        "luana coded",
+        "provavelmente é arte",
+        "para",
+        "continua",
+        "isso era segredo",
+        "vc não devia ver isso",
+        "ok agora já foi",
+      ];
+
+      const frasesSecretas = [
+  "isso é muito vc",
+  "ninguém mais entenderia",
+  "essa parte é sua",
+  "não explica pra ninguém"
+];
+
+      const imagens = [
+        "../img/lauane (1).jpeg",
+        "../img/lauane (2).jpeg",
+        "../img/lauane (3).jpeg",
+        "../img/lauane (4).jpeg",
+        "../img/lauane (5).jpeg",
+        "../img/lauane (6).jpeg",
+        "../img/lauane (7).jpeg",
+        "../img/lauane (8).jpeg",
+        "../img/lauane (9).jpeg",
+        "../img/lauane (10).jpeg",
+        "../img/lauane (11).jpeg",
+        "../img/lauane (12).jpeg",
+        "../img/lauane (13).jpeg",
+        "../img/lauane (14).jpeg",
+        "../img/lauane (15).jpeg",
+        "../img/lauane (16).jpeg",
+        "../img/lauane (17).jpeg",
+        "../img/lauane (18).jpeg",
+        "../img/lauane (19).jpeg",
+        "../img/lauane (20).jpeg",
+        "../img/lauane (21).jpeg",
+        "../img/lauane (22).jpeg",
+        "../img/lauane (23).jpeg",
+        "../img/lauane (24).jpeg",
+        "../img/lauane (25).jpeg",
+        "../img/lauane (26).jpeg",
+        "../img/lauane (27).jpeg",
+        "../img/lauane (28).jpeg",
+        "../img/lauane (29).jpeg",
+        "../img/lauane (30).jpeg",
+        "../img/lauane (31).jpeg",
+        "../img/lauane (32).jpeg",
+        "../img/lauane (33).jpeg",
+        "../img/lauane (34).jpeg",
+        "../img/lauane (35).jpeg",
+        "../img/lauane (36).jpeg",
+        "../img/lauane (37).jpeg",
+        "../img/lauane (38).jpeg",
+        "../img/lauane (39).jpeg",
+        "../img/lauane (40).jpeg",
+        "../img/lauane (41).jpeg",
+        "../img/lauane (42).jpeg",
+        "../img/lauane (43).jpeg",
+        "../img/lauane (44).jpeg",
+        "../img/lauane (45).jpeg",
+        "../img/lauane (46).jpeg",
+        "../img/lauane (47).jpeg",
+        "../img/lauane (48).jpeg",
+        "../img/lauane (49).jpeg",
+        "../img/lauane (50).jpeg",
+        "../img/lauane (51).jpeg",
+        "../img/lauane (52).jpeg",
+        "../img/lauane (53).jpeg",
+        "../img/lauane (54).jpeg",
+        "../img/lauane (55).jpeg",
+        "../img/lauane (56).jpeg",
+        "../img/lauane (57).jpeg",
+        "../img/lauane (58).jpeg",
+        "../img/lauane (59).jpeg",
+        "../img/lauane (60).jpeg",
+        "../img/lauane (61).jpeg",
+        "../img/lauane (62).jpeg",
+        "../img/lauane (63).jpeg",
+        "../img/lauane (64).jpeg",
+        "../img/lauane (65).jpeg",
+        "../img/lauane (66).jpeg",
+        "../img/lauane (67).jpeg",
+        "../img/lauane (68).jpeg",
+        "../img/lauane (69).jpeg",
+        "../img/lauane (70).jpeg",
+        "../img/lauane (71).jpeg",
+        "../img/lauane (72).jpeg",
+        "../img/lauane (73).jpeg",
+        "../img/lauane (74).jpeg",
+        "../img/lauane (75).jpeg",
+      ];
+
+      const musica = document.getElementById("musica");
+
+      document.body.addEventListener("click", (e) => {
+        clicks++;
+        document.getElementById("contador").innerText = `cliques: ${clicks}`;
+
+        if (Math.random() < 0.6) {
+          criarMensagem(e.clientX, e.clientY);
+        }
+
+        if (Math.random() < 0.5) {
+          criarImagem(e.clientX, e.clientY);
+        }
+
+        if (clicks === 13) {
+          musica.volume = 0.4;
+          musica.play();
+        }
+
+        if (clicks === 1) {
+          window.location.href = "secret.html";
+        }
+        if (navigator.vibrate) {
+          navigator.vibrate(Math.random() > 0.7 ? 200 : 50);
+        }
+        if (clicks > 40 && Math.random() < 0.3) {
+  msg.innerText = frasesSecretas[Math.floor(Math.random() * frasesSecretas.length)];
+}
+      });
+
+      document.getElementById("naoClique").addEventListener("click", (e) => {
+        e.stopPropagation();
+        window.location.href = "secret2.html";
+      });
+
+      function criarMensagem(x, y) {
+        const msg = document.createElement("div");
+        msg.className = "mensagem";
+        msg.innerText = frases[Math.floor(Math.random() * frases.length)];
+        msg.style.left = x + "px";
+        msg.style.top = y + "px";
+        msg.style.setProperty("--rot", `${Math.random() * 20 - 10}deg`);
+        document.body.appendChild(msg);
+        setTimeout(() => msg.remove(), 3000);
+        const index = Math.floor(Math.random() * frases.length);
+        msg.innerText = frases.splice(index, 1)[0];
+
+        if (frases.length === 0) {
+          frases = ["acabou.", "fim?", "não era pra acabar"];
+        }
+      }
+
+      function criarImagem(x, y) {
+        const img = document.createElement("img");
+        img.className = "colagem";
+        img.src = imagens[Math.floor(Math.random() * imagens.length)];
+        img.style.left = x + "px";
+        img.style.top = y + "px";
+        img.style.transform = `rotate(${Math.random() * 30 - 15}deg)`;
+        document.body.appendChild(img);
+        setTimeout(() => img.remove(), 4000);
+      }
+    </script>
+  </body>
+</html>
