@@ -78,8 +78,21 @@ body {
   text-align: center;
   font-family: "Poppins", sans-serif;
 }
+.main-fatos{
+  background-color: #ffffff80;
+  margin: 0px 150px;
+  padding: 50px;
+  border-radius: var(--radius);
+  border: 2px solid var(--pink-soft);
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: var(--space-5);
+  align-items: center;
+  font-family: "Poppins", sans-serif;
+}
 
-.main,
+.main, main-fatos,
 .card {
   max-width: 100%;
 }
